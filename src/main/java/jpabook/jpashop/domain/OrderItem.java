@@ -1,9 +1,6 @@
 package jpabook.jpashop.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -13,11 +10,19 @@ public class OrderItem {
     @Column(name="order_item_id")
     private Long id;
 
-    @Column(name="order_id")
-    private Long orderId;
+//    @Column(name="order_id")
+//    private Long orderId;
 
-    @Column(name="item_id")
-    private Long itemId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="order_id")
+    private Order order;
+
+
+//    @Column(name="item_id")
+//    private Long itemId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="item_id")
+    private Item item;
 
     private int orderPrice;
     private int count;
