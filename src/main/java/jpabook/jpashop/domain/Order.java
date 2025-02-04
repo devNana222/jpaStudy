@@ -15,6 +15,9 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
+    @OneToOne
+    @JoinColumn(name="delivery_id")
+    private Delivery delivery;
 //    @Column(name="member_id")
 //    private Long memberId;
 
