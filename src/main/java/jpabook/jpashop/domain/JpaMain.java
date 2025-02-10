@@ -13,16 +13,22 @@ public class JpaMain {
         tx.begin();
 
         try{
-            Order order = new Order();
+           /* Order order = new Order();
             em.persist(order);
             //방법 1
             order.addOrderItem(new OrderItem());
-
+*/
             //방법 2. Member의 orderList - Order의 orderItems의 연결까지 만들지 않아도 되긴함.
 //            OrderItem orderItem = new OrderItem();
 //            orderItem.setOrder(order);
 //            em.persist(orderItem);
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("김영한");
 
+            em.persist(book);
+
+            tx.commit();
 
             tx.commit();
         } catch (Exception e){
